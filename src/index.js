@@ -3,12 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { CostmerContextProvider } from './Context/CostmerContext';
+import { AuthContextProvider } from './Context/AuthContext';
+import { UserContextProvider } from './Context/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <AuthContextProvider>
+    <UserContextProvider>
+      <CostmerContextProvider>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </CostmerContextProvider>
+    </UserContextProvider>
+  </AuthContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
